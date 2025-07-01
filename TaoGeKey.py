@@ -10,6 +10,8 @@ class TaoGeKey:
         result = b""
         for i in text:
             byte = i.encode("utf-8")
+            if hashCode%255 == 0:
+                hashCode = hashCode + 1
             for j in range(len(byte)):
                 result += ((byte[j] + abs(hashCode)) % 255).to_bytes(1, byteorder="big")
         ans = ""
